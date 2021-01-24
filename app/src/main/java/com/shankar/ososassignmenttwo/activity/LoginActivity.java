@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.shankar.customtoast.Keyboard;
+import com.shankar.customtoast.StatusBar;
 import com.shankar.ososassignmenttwo.R;
 
 
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordET= findViewById(R.id.passwordET);
         submitButton.setOnClickListener(v -> startLogin());
 
+        StatusBar.setStatusBarColorWhite(this);
     }
 
     private void startLogin() {

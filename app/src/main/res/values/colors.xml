@@ -5,6 +5,9 @@
     <color name="colorPrimaryDark">#130780</color>
     <color name="colorAccent">#FF4081</color>
 
+
+    <color name="blue_grey_800">#37474F</color>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

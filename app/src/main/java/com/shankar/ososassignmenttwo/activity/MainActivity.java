@@ -15,6 +15,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.shankar.customtoast.StatusBar;
 import com.shankar.customtoast.Toasty;
 import com.shankar.ososassignmenttwo.R;
 import com.shankar.ososassignmenttwo.adapter.RecyclerInterface;
@@ -61,6 +62,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         userModelList = new ArrayList<>();
         loadRetrofitRecycler();
 
+        StatusBar.setStatusBarColorCustom(this,R.color.darkPrimary);
     }
 
     private void loadRetrofitRecycler() {

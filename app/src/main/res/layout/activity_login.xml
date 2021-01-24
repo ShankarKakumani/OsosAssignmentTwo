@@ -6,54 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".activity.LoginActivity"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="25dp"
-    android:background="@color/white"
-    android:theme="@style/AppTheme.Material">
+    android:gravity="center_vertical"
+    android:background="@color/white">
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="fill_parent"
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="5dp"
+        android:text="Sign In"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/blue_grey_800"
+        android:textStyle="bold" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usernameET"
+    <View
+        android:layout_width="50dp"
+        android:layout_height="4dp"
+        android:background="@color/orange"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="8dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.Material"
+        android:orientation="vertical"
+
+        >
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username"
-            android:text="@string/one_two_three"
-            android:lines="1"
-            android:singleLine="true"
-            android:textSize="14sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="10dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameET"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/username"
+                android:text="@string/one_two_three"
+                android:lines="1"
+                android:singleLine="true"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordET"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:text="@string/one_two_three"
-            android:lines="1"
-            android:singleLine="true"
-            android:textSize="14sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="10dp">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordET"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:text="@string/one_two_three"
+                android:lines="1"
+                android:singleLine="true"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/submit_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:backgroundTint="@color/purple_500"
-        android:text="@string/submit"
+        android:backgroundTint="@color/orange"
+        android:text= "@string/submit_capSpaces"
+        android:textColor="@color/white"
         />
 
 

@@ -93,10 +93,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         UserViewHolder(View itemView) {
             super(itemView);
 
-            userInfo = (TextView) itemView.findViewById(R.id.userInfoTV);
-            addressInfo = (TextView) itemView.findViewById(R.id.addressInfoTV);
-            geoInfo = (TextView) itemView.findViewById(R.id.geoInfoTV);
-            cardIndex = (TextView) itemView.findViewById(R.id.cardIndex);
+            userInfo = itemView.findViewById(R.id.userInfoTV);
+            addressInfo = itemView.findViewById(R.id.addressInfoTV);
+            geoInfo = itemView.findViewById(R.id.geoInfoTV);
+            cardIndex = itemView.findViewById(R.id.cardIndex);
         }
     }
 }
