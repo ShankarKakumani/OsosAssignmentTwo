@@ -72,21 +72,21 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onResponse(@NonNull Call<List<UserModel>> call, @NonNull Response<List<UserModel>> response) {
 
-                List<UserModel> heroList = response.body();
-                assert heroList != null;
+                List<UserModel> userList = response.body();
+                assert userList != null;
 
-                for (int i = 0; i < heroList.size(); i++) {
+                for (int i = 0; i < userList.size(); i++) {
 
                     UserModel userModel = new UserModel(
-                            heroList.get(i).getName(),
-                            heroList.get(i).getUsername(),
-                            heroList.get(i).getEmail(),
-                            heroList.get(i).getAddress().getStreet(),
-                            heroList.get(i).getAddress().getSuite(),
-                            heroList.get(i).getAddress().getCity(),
-                            heroList.get(i).getAddress().getZipcode(),
-                            heroList.get(i).getAddress().getGeo().getLat(),
-                            heroList.get(i).getAddress().getGeo().getLng()
+                            userList.get(i).getName(),
+                            userList.get(i).getUsername(),
+                            userList.get(i).getEmail(),
+                            userList.get(i).getAddress().getStreet(),
+                            userList.get(i).getAddress().getSuite(),
+                            userList.get(i).getAddress().getCity(),
+                            userList.get(i).getAddress().getZipcode(),
+                            userList.get(i).getAddress().getGeo().getLat(),
+                            userList.get(i).getAddress().getGeo().getLng()
                     );
 
                     userModelList.add(userModel);
