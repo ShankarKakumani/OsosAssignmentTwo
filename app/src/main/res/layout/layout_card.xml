@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User Info :"
+                android:text="@string/user_info"
                 android:textSize="16sp"
                 android:textColor="@color/colorPrimary"
                 />
@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Address :"
+                android:text="@string/address"
                 android:textSize="16sp"
                 android:textColor="@color/colorPrimary"
                 />
@@ -52,7 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Geo :"
+                android:text="@string/geo"
                 android:textSize="16sp"
                 android:textColor="@color/colorPrimary"
                 />

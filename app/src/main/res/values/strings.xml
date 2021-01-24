@@ -8,4 +8,8 @@
 
     <string name="text_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eget ligula eu lectus lobortis condimentum.</string>
     <string name="submit_capSpaces">S U B M I T</string>
+    <string name="user_info">User Info :</string>
+    <string name="address">Address :</string>
+    <string name="geo">Geo :</string>
+    <string name="sign_in">Sign In</string>
 </resources>
