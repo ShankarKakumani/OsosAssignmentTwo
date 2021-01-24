@@ -53,7 +53,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.geoInfo.setText(geoST);
 
 
-
+        //to get the current visible item in recyclerView based on scroll
         dataRecycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -69,9 +69,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
                 UserModel modelLocation = userModelList.get(firstVisibleItem);
                 holder.cardIndex.setText(String.valueOf(firstVisibleItem+1));
-                String locationST =  modelLocation.getStreet() + ", " + modelLocation.getSuite() + ", " + modelLocation.getCity() + ", " + modelLocation.getZipcode();
 
                 LatLng latLng = new LatLng(Double.parseDouble(modelLocation.getLat()), Double.parseDouble(modelLocation.getLng()));
+                String locationST =  modelLocation.getStreet() + ", " + modelLocation.getSuite() + ", " + modelLocation.getCity() + ", " + modelLocation.getZipcode();
 
                 recyclerInterface.onRecyclerScrolled(latLng, locationST);
 

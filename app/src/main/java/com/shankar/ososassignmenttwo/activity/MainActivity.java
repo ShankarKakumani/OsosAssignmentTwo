@@ -49,7 +49,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         Objects.requireNonNull(mapFragment).getMapAsync(this);
 
-        //Initializing RecyclerView , LinearLayout Manager and List
+        //Initializing RecyclerView , LinearLayoutManager and List
         dataRecycler = findViewById(R.id.dataRecycler);
         dataRecycler.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
@@ -58,10 +58,12 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         SnapHelper mSnapHelper = new PagerSnapHelper();
         mSnapHelper.attachToRecyclerView(dataRecycler);
 
-
         userModelList = new ArrayList<>();
+
+
         loadRetrofitRecycler();
 
+        //Its from a dependency I created to change statusBar color
         StatusBar.setStatusBarColorCustom(this,R.color.darkPrimary);
     }
 
@@ -102,6 +104,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onFailure(@NonNull Call<List<UserModel>> call, @NonNull Throwable t) {
 
+                //Its from a dependency I created to show toasts with color & icon
                 Toasty.errorToast(MainActivity.this, "Error : "+t);
             }
         });
