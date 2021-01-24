@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_5"
-    android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
     <fragment
@@ -12,18 +11,50 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"/>
+        android:layout_above="@+id/rLayout" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dataRecycler"
+    <RelativeLayout
+        android:id="@+id/rLayout"
         android:layout_width="match_parent"
-        android:visibility="visible"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/layout_card"
-        android:layout_weight="1"
-        android:padding="10dp"
-        />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dataRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            />
 
 
+        <LinearLayout
+            android:id="@+id/infoLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            >
+            <TextView
+                android:id="@+id/infoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loading"
+                />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/retryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retry"
+                android:visibility="gone"
+                android:layout_marginStart="15dp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,6 +1,8 @@
 package com.shankar.ososassignmenttwo.activity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -16,7 +18,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.shankar.customtoast.StatusBar;
-import com.shankar.customtoast.Toasty;
 import com.shankar.ososassignmenttwo.R;
 import com.shankar.ososassignmenttwo.adapter.RecyclerInterface;
 import com.shankar.ososassignmenttwo.adapter.UserAdapter;
@@ -39,6 +40,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     UserAdapter userAdapter;
     List<UserModel> userModelList;
 
+    TextView infoText, retryText;
+
     GoogleMap mMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +52,21 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         Objects.requireNonNull(mapFragment).getMapAsync(this);
 
+
+        infoText = findViewById(R.id.infoText);
+        retryText = findViewById(R.id.retryText);
         //Initializing RecyclerView , LinearLayoutManager and List
+
+        userModelList = new ArrayList<>();
+
         dataRecycler = findViewById(R.id.dataRecycler);
         dataRecycler.setHasFixedSize(true);
+
         linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         dataRecycler.setLayoutManager(linearLayoutManager);
 
         SnapHelper mSnapHelper = new PagerSnapHelper();
         mSnapHelper.attachToRecyclerView(dataRecycler);
-
-        userModelList = new ArrayList<>();
 
 
         loadRetrofitRecycler();
@@ -68,11 +76,15 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void loadRetrofitRecycler() {
+        infoText.setText(R.string.loading);
+        retryText.setVisibility(View.GONE);
 
         Call<List<UserModel>> call = Retrofit.getInstance().getMyApiService().loadUsers();
         call.enqueue(new Callback<List<UserModel>>() {
             @Override
             public void onResponse(@NonNull Call<List<UserModel>> call, @NonNull Response<List<UserModel>> response) {
+
+                infoText.setVisibility(View.GONE);
 
                 List<UserModel> userList = response.body();
                 assert userList != null;
@@ -103,9 +115,12 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onFailure(@NonNull Call<List<UserModel>> call, @NonNull Throwable t) {
-
                 //Its from a dependency I created to show toasts with color & icon
-                Toasty.errorToast(MainActivity.this, "Error : "+t);
+
+                infoText.setText(R.string.failed_to_load);
+                retryText.setVisibility(View.VISIBLE);
+                retryText.setOnClickListener(v -> loadRetrofitRecycler());
+
             }
         });
 
@@ -127,5 +142,4 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(latlng).title(locationST));
 
     }
-
 }

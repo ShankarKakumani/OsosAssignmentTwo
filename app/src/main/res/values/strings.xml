@@ -12,4 +12,7 @@
     <string name="address">Address :</string>
     <string name="geo">Geo :</string>
     <string name="sign_in">Sign In</string>
+    <string name="loading">Downloading …</string>
+    <string name="retry">Retry</string>
+    <string name="failed_to_load">Failed to load.</string>
 </resources>

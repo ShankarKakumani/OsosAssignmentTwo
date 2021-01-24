@@ -7,10 +7,13 @@ import android.preference.PreferenceManager;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.shankar.customtoast.Keyboard;
 import com.shankar.customtoast.StatusBar;
+import com.shankar.customtoast.Toasty;
 import com.shankar.ososassignmenttwo.R;
 
 
@@ -20,25 +23,25 @@ public class LoginActivity extends AppCompatActivity {
 
 
     TextInputEditText usernameET, passwordET;
-    Button submitButton;
-
     SharedPreferences preferences;
-    SharedPreferences.Editor editor;
 
+    LoginViewModel loginViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        userLoginStatus();
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        submitButton= findViewById(R.id.submit_button);
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+
         usernameET= findViewById(R.id.usernameET);
         passwordET= findViewById(R.id.passwordET);
-        submitButton.setOnClickListener(v -> startLogin());
+        findViewById(R.id.submit_button).setOnClickListener(v -> startLogin());
 
         StatusBar.setStatusBarColorWhite(this);
+        userLoginStatus();
     }
 
     private void startLogin() {
@@ -47,17 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         Keyboard.hideKeyboard(this);
 
 
-        if(usernameST.isEmpty())
-        {
-            usernameET.setError("Empty!");
-            usernameET.requestFocus();
-        }
-        else if(passwordST.isEmpty())
-        {
-            passwordET.setError("Empty!");
-            passwordET.requestFocus();
-        }
-        else if(!usernameST.equals("123"))
+        if(!usernameST.equals("123"))
         {
             usernameET.setError("Invalid!");
             usernameET.requestFocus();
@@ -67,24 +60,21 @@ public class LoginActivity extends AppCompatActivity {
             passwordET.setError("Invalid!");
             passwordET.requestFocus();
         }
-
         else
         {
-            editor = preferences.edit();
-            editor.putString("status", "logged_in");
-            editor.apply();
+            loginViewModel.updatePreference(preferences);
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
+
+
     }
 
 
     private void userLoginStatus() {
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String status = preferences.getString("status", null);
-
-        if (status != null) {
+        if(loginViewModel.isLogin(preferences))
+        {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
