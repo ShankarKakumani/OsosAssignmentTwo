@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Osos_A2</string>
+    <string name="username">Username</string>
+    <string name="one_two_three">123</string>
+    <string name="password">Password</string>
+    <string name="submit">Submit</string>
+
+
+    <string name="text_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eget ligula eu lectus lobortis condimentum.</string>
+</resources>
